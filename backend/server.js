@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 3050
 
 data = {
   type: "burger",
@@ -8,8 +8,18 @@ data = {
   size: "1"
 }
 
-app.get('/test', (req, res) => {
+data2 = {
+  type: "burger",
+  name: "daves",
+  size: "2"
+}
+
+app.get('/1', (req, res) => {
   res.json(data);
+})
+
+app.get('/2', (req, res) => {
+  res.json(data2);
 })
 
 app.listen(port, () => {
