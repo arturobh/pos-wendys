@@ -9,7 +9,7 @@ import {getOneProduct} from '../services/productServices';
 const bootstrap = require('bootstrap');
 const backendURL = 'http://localhost:3001';
 
-const Products =({products}) => {
+const Products =({products, addToOrder}) => {
     let rendered = [];
     let row = [];
 
@@ -17,10 +17,12 @@ const Products =({products}) => {
     const [productSelected, setProductSelected] = useState(false);
     const [productData, setProductData] = useState([]);
 
+
     async function  handleClickedItem(id){
         setProductModalShow(true);
         const productdata = await getOneProduct(id);
         setProductData(productdata);
+        console.log(productData);
         setProductSelected(true);
     }
 
@@ -47,6 +49,7 @@ const Products =({products}) => {
             <ProductModal
                 productData={productData}
                 show={productModalShow}
+                addToOrder={addToOrder}
                 onHide={() => {
                     setProductModalShow(false);
                     setProductSelected(false);

@@ -22,10 +22,11 @@ function ClientModal(props){
           aria-labelledby="contained-modal-title-vcenter"
           centered
           backdrop="static"
+          keyboard={false}
         >
           <Modal.Body>
             <div>
-                <h4 class="text-center">Ingrese el nombre del cliente</h4>
+                <h4 className="text-center">Ingrese el nombre del cliente</h4>
             </div>
             <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

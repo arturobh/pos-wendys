@@ -1,11 +1,11 @@
 import Form from 'react-bootstrap/Form';
 import React, { useState } from "react";
 
-function SizeOption({defaultSize,options,changeImage,changePrice, onClickCallback}){
+function DrinkSizeOption({defaultSize, options, onClickCallback}){
     return (
       <div class="item-wrap">
             <div className="mb-3 align-items-center">
-                <h1>Seleccione el tamaño</h1>
+                <h1>Seleccione el tamaño de la bebida</h1>
             {options.map((option) => (
                 <Form.Check
                     className='form-control-lg'
@@ -13,11 +13,8 @@ function SizeOption({defaultSize,options,changeImage,changePrice, onClickCallbac
                     id={option.name}
                     key={option.name}
                     defaultChecked= {option.size===defaultSize}
-                    label=<div>
-                    {option.name.toUpperCase()}
-                    <p className='fade alert alert-warning show'>{option.price}</p></div>
-                    name='size'
-                    
+                    label={option.name.toUpperCase()}
+                    name='drinkSizeSelected'
                     value={option.size}
                     type='radio'
                     onClick={ (e) =>{ 
@@ -25,9 +22,8 @@ function SizeOption({defaultSize,options,changeImage,changePrice, onClickCallbac
                             key: e.target.name,
                             value : e.target.value
                         }
+                        console.log(data)
                         onClickCallback(data);
-                        changeImage(option.imagePath);
-                        changePrice(option.price);
                     }}
                  />
             ))}
@@ -36,4 +32,4 @@ function SizeOption({defaultSize,options,changeImage,changePrice, onClickCallbac
     )
 }
 
-export default SizeOption;
+export default DrinkSizeOption;

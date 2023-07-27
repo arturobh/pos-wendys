@@ -11,30 +11,12 @@ import ComboOption from './ComboOption';
 import ExtraIngredientsOption from './ExtraIngredientsOption';
 const backendURL = 'http://localhost:3001';
 
-function ProductModal(props){
-  props.productData.name = props.productData.name.toUpperCase();
+function EditModal(props){
+  props.editData.data.name = props.editData.data.name.toUpperCase();
 
-  const [showImage, setShowImage] = useState(backendURL+props.productData.imagePath);
-  const [itemToAdd, setItemToAdd] = useState([]);
-  const [formValues, setFormValues] = useState({
-    data : props.productData,
-    name: props.productData.name.toLowerCase(),
-    type: props.productData.type,
-    size : props.productData.options[0].size,
-    price: props.productData.options[0].price,
-    extras: [],
-    isCombo : false,
-    subTotal: 0,
-    combo : {
-      drinkName: "",
-      drinkSizeStandard: "2",
-      drinkSizeSelected: "2",
-      extraName: "medium",
-      extraSizeStandard: "2",
-      extraSizeSelected: "2"
-    },
-
-  })
+  const [showImage, setShowImage] = useState(backendURL+props.editData.data.imagePath);
+  const [itemToEdit, setItemToEdit] = useState([]);
+  const [formValues, setFormValues] = useState(props.editData);
 
 
   function handleSubmit(){
@@ -56,13 +38,14 @@ function ProductModal(props){
     required.forEach(element => {
       if(element===0){
         ready = false;
+        console.log("nono")
       }
     });
 
 
     if(ready){
       props.onHide();
-      props.addToOrder(formValues);
+      props.editToOrder(formValues, props.id);
     }
   }
 
@@ -177,7 +160,7 @@ function ProductModal(props){
     <Form className='form-control-lg'>
       <Modal.Header  closeButton>
         <Modal.Title bsPrefix='text-center' id="contained-modal-title-vcenter">
-          <h1>{props.productData.name}</h1>
+          <h1>{props.editData.data.name}</h1>
         </Modal.Title>
       </Modal.Header>
 
@@ -199,7 +182,7 @@ function ProductModal(props){
               <Row>
                 <SizeOption
                   defaultSize={formValues.size}
-                  options={props.productData.options}
+                  options={props.editData.data.options}
                   changeImage={handleChangeImage}
                   changePrice={handleChangePrice}
                   onClickCallback={handleChange}
@@ -207,34 +190,39 @@ function ProductModal(props){
               </Row>
 
                 <Row>
-                  {haveComboOption(props.productData.type) &&
+                  {haveComboOption(props.editData.data.type) &&
                     <ComboOption
-                    defaultDrinkSize={formValues.combo.drinkSizeStandard}
-                    defaultExtraSize={formValues.combo.extraSizeStandard}
-                    price={formValues.price}
-                    onClickCallback={handleChange}/> 
+                      defCheck={props.editData.isCombo}
+                      defaultDrinkName={formValues.combo.drinkName}
+                      defaultDrinkSize={formValues.combo.drinkSizeSelected==='' ? formValues.combo.drinkSizeStandard :formValues.combo.drinkSizeSelected}
+                      defaultExtraSize={formValues.combo.extraSizeSelected==='' ? formValues.combo.extraSizeStandard : formValues.combo.extraSizeSelected}
+                      price={formValues.price}
+                      onClickCallback={handleChange}
+                      /> 
                   }
                 </Row>
                 <Row>
                   {/* extra ingredients row */}
-                  {haveComboOption(props.productData.type) &&
+                  {haveComboOption(props.editData.data.type) &&
                   <ExtraIngredientsOption
+                    selected={props.editData.extras}
                     checkboxCallback={handleCheck}
                     />
                   }
                 </Row>
- 
             </Col>
           </Row>
       </Modal.Body>
 
 
       <Modal.Footer>
-        <Button onClick={handleSubmit}>Añadir a la orden</Button>
+        <Button 
+        variant="warning" 
+        onClick={handleSubmit}>Modificar</Button>
       </Modal.Footer>
       </Form>
     </Modal>
     );
 }
 
-export default ProductModal;
+export default EditModal;

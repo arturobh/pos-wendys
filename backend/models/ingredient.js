@@ -10,8 +10,16 @@ const igredientSchema = new Schema({
         type: String, 
         required : true
     },
-    img : {
+    imagePath : {
         type: String, 
+        required : true
+    },
+    extraPrice : {
+        type: Number,
+        required : false
+    },
+    isExtra : {
+        type: Boolean,
         required : true
     }
 })

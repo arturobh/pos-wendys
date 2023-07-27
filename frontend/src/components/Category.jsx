@@ -1,6 +1,6 @@
 import daves from '../daves_x1.png'
 
-function Category({id, name, image = daves, handleClick}){
+function Category({id, name, image, handleClick}){
 
     name = name.toUpperCase();
     return (

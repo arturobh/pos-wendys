@@ -5,13 +5,13 @@ function Item({id, name, img, description, onClickCallback}){
 
   name = name.toUpperCase();
     return (
-      <div class="item-wrap"
+      <div className="item-wrap"
       onClick={() => {
         onClickCallback(id);
       }}>
-        <img class="img-product" src={img}></img>
-        <h1 class="h6">{name}</h1>
-        <p class="item-desc">{description}</p>
+        <img className="img-product" src={img}></img>
+        <h1 className="h6">{name}</h1>
+        <p className="item-desc">{description}</p>
       </div>
     )
 }

@@ -33,9 +33,35 @@
 }
 
 .order-container {
-  height: 100%;
+  height: 90vh;
   width: 30%;
+  display: flex;
+  flex-direction: column;
   background: #e6e6e6;
+}
+
+
+.order-footer{
+  display: flex;
+  flex-direction: row;
+  height: 20%;
+  justify-content: space-evenly;
+  border-top-style: solid;
+  border-top-color: #b4b4b4;
+}
+
+.order-body{
+  background: #e6e6e6;
+  height: 90%;
+  overflow-y: scroll;
+}
+
+
+.order-header{
+  height: 12%;
+  padding-left:30px;
+  border-bottom-style: solid;
+  border-bottom-color: #b4b4b4;
 }
 
 .selection-container {
@@ -92,8 +118,8 @@
 }
 
 .img {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -136,6 +162,126 @@
 .row-height{
   height: 60vh;
 }
+
+.combo-wrap {
+  border-radius: 25px;
+  text-align: center;
+}
+
+.img-ingredient {
+  width: 125px;
+  height: auto;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  margin: 0;
+}
+
+.order-footer-totals{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 80%;
+  padding: 20px 30px 5px 30px;
+}
+
+.order-footer-button{
+  padding: 10px 0px 5px 0px;
+}
+
+.order-pay-button{
+  width:100%;
+  height:100%;
+  background: #005e06;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 1.95px;
+  border-radius: 10px;
+  color: black;
+  font-size : 20px;
+  font-weight: bold;
+}
+
+.order-logo {
+  margin: 10px;
+  height: 6vmin;
+  pointer-events: none;
+}
+
+.footer-line{
+  margin-left: 10px;
+  margin-right: 10px;
+  
+  margin-bottom: 10px;
+}
+
+.footer-col{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+/* Order Items List */
+
+.order-item-wrap{
+  padding: 10px 0px 10px 10px;
+  width:100%;
+  background: #eaf6fc; 
+  border-color: rgb(149, 149, 149);
+  border-style: solid;
+  border-width: 1px;
+}
+
+.order-item-title{
+  margin-left: 30px;
+}
+
+.order-item-price{
+  margin-right: 10px;
+}
+
+.order-item-detail{
+  margin-left: 70px;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.order-item-remove-button {
+  cursor: pointer;
+  background-color: transparent;
+  height: 50px;
+  width: 200px;
+  color: #3498db;
+  font-size: 1.5em;
+  border:none;
+}
+
+.filter-red{
+  filter: invert(25%) sepia(79%) saturate(6565%) hue-rotate(17deg) brightness(82%) contrast(123%);
+}
+
+.toast-img{
+  width:150px;
+  height: auto;
+}
+
+/* Payment Modal */
+
+.payment-container{
+  width: auto;
+}
+.order-copy-container{
+  height: 87vh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.order-copy-body {
+  background: #ffffff;
+  height: 90%;
+}
+
 
 
 @keyframes App-logo-spin {

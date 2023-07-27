@@ -27,6 +27,7 @@ module.exports = class Server {
     routes(){
         this.app.use('/api/categories', require('../routes/category'));
         this.app.use('/api/products', require('../routes/product'));
+        this.app.use('/api/ingredients', require('../routes/ingredient'));
     }
 
     initialize(){
